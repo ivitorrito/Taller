@@ -39,7 +39,7 @@ public class NuevoCoche extends javax.swing.JFrame {
         FechaDeMatriculacion = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Matricula");
 
@@ -129,6 +129,7 @@ public class NuevoCoche extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BastidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BastidorActionPerformed
