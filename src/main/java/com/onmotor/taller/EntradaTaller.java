@@ -465,9 +465,9 @@ public class EntradaTaller extends javax.swing.JFrame {
             ps.setString(4, txtColor.getText());
             ps.setString(5, txtKilometros.getText());
             ps.setString(6, txtCombustible.getItemAt(WIDTH));
-            ps.setString(7, txtFecha.getDateFormatString());
+            ps.setString(7, txtFecha.getDate().toString());
             ps.setString(8, txtModelo.getText());
-            ps.setString(9, txtItv.getDateFormatString());
+            ps.setString(9, txtItv.getDate().toString());
             ps.setString(10, txtTipoMotor.getText());
             ps.setString(11, txtCilindrada.getText());
             ps.setString(12, txtCv.getText());
