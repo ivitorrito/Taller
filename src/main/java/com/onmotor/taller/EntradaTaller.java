@@ -5,17 +5,20 @@
  */
 package com.onmotor.taller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  *
  * @author Taller
  */
 public class EntradaTaller extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NuevoCoche
-     */
+   
     public EntradaTaller() {
         initComponents();
+        
     }
 
     /**
@@ -51,17 +54,9 @@ public class EntradaTaller extends javax.swing.JFrame {
         jLabel53 = new javax.swing.JLabel();
         txtCilindrada = new javax.swing.JTextField();
         jLabel54 = new javax.swing.JLabel();
-        tctCv = new javax.swing.JTextField();
+        txtCv = new javax.swing.JTextField();
         txtColor = new javax.swing.JTextField();
         txtKilometros = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAveria = new javax.swing.JTextArea();
-        AgregarCliente = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtObservaciones = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -83,6 +78,14 @@ public class EntradaTaller extends javax.swing.JFrame {
         txtCiudad = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
         txtNumeroPiso = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAveria = new javax.swing.JTextArea();
+        AgregarCliente = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtObservaciones = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -133,7 +136,7 @@ public class EntradaTaller extends javax.swing.JFrame {
                     .addComponent(jLabel54))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tctCv, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                    .addComponent(txtCv, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                     .addComponent(txtCilindrada)
                     .addComponent(txtTipoMotor))
                 .addContainerGap(75, Short.MAX_VALUE))
@@ -152,7 +155,7 @@ public class EntradaTaller extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
-                    .addComponent(tctCv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -249,57 +252,6 @@ public class EntradaTaller extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Vehiculo", jPanel12);
-
-        txtAveria.setColumns(20);
-        txtAveria.setRows(5);
-        jScrollPane1.setViewportView(txtAveria);
-
-        AgregarCliente.setText("Agregar");
-
-        txtObservaciones.setColumns(20);
-        txtObservaciones.setRows(5);
-        jScrollPane2.setViewportView(txtObservaciones);
-
-        jLabel1.setText("Averia");
-
-        jLabel2.setText("Observaciones");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AgregarCliente)
-                .addGap(49, 49, 49))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(56, 56, 56)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(183, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AgregarCliente)
-                .addGap(31, 31, 31))
-        );
-
-        jTabbedPane1.addTab("Averia", jPanel2);
 
         jLabel31.setText("Nombre");
 
@@ -416,6 +368,62 @@ public class EntradaTaller extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cliente", jPanel1);
 
+        txtAveria.setColumns(20);
+        txtAveria.setRows(5);
+        jScrollPane1.setViewportView(txtAveria);
+
+        AgregarCliente.setText("Agregar");
+        AgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarClienteActionPerformed(evt);
+            }
+        });
+
+        txtObservaciones.setColumns(20);
+        txtObservaciones.setRows(5);
+        jScrollPane2.setViewportView(txtObservaciones);
+
+        jLabel1.setText("Averia");
+
+        jLabel2.setText("Observaciones");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AgregarCliente)
+                .addGap(49, 49, 49))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(183, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AgregarCliente)
+                .addGap(31, 31, 31))
+        );
+
+        jTabbedPane1.addTab("Averia", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -426,7 +434,7 @@ public class EntradaTaller extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jTabbedPane1)
                 .addGap(0, 0, 0))
         );
@@ -442,6 +450,34 @@ public class EntradaTaller extends javax.swing.JFrame {
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoActionPerformed
+
+    private void AgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClienteActionPerformed
+       String sql = "insert into Coche (matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv)values(?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            ConexionMysql conectar = new ConexionMysql();
+            PreparedStatement ps;
+            Connection con = conectar.getConnection();
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, txtMatricula.getText());
+            ps.setString(2, txtBastidor.getText());
+            ps.setString(3, txtMarca.getName());
+            ps.setString(4, txtColor.getText());
+            ps.setString(5, txtKilometros.getText());
+            ps.setString(6, txtCombustible.getName());
+            ps.setString(7, txtFecha.getCalendar().toString());
+            ps.setString(8, txtModelo.getText());
+            ps.setString(9, txtItv.getCalendar().toString());
+            ps.setString(10, txtTipoMotor.getText());
+            ps.setString(11, txtCilindrada.getText());
+            ps.setString(12, txtCv.getText());
+            
+            ps.execute();
+            System.out.println("realizado con exito");
+
+        } catch (SQLException e) {
+        }
+    }//GEN-LAST:event_AgregarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -512,7 +548,6 @@ public class EntradaTaller extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField tctCv;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextArea txtAveria;
     private javax.swing.JTextField txtBastidor;
@@ -522,6 +557,7 @@ public class EntradaTaller extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtCombustible;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtCp;
+    private javax.swing.JTextField txtCv;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDni;
     private com.toedter.calendar.JDateChooser txtFecha;
