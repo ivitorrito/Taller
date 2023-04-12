@@ -110,6 +110,8 @@ public class EntradaTaller extends javax.swing.JFrame {
 
         jLabel49.setText("ITV");
 
+        txtItv.setMaxSelectableDate(new java.util.Date(253370764919000L));
+
         jLabel50.setText("Combustible");
 
         txtCombustible.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diesel", "Gasolina", "Electrico", "Hibrido" }));
@@ -183,7 +185,7 @@ public class EntradaTaller extends javax.swing.JFrame {
                     .addComponent(txtColor)
                     .addComponent(txtKilometros)
                     .addComponent(txtMatricula))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel47)
                     .addComponent(jLabel49)
@@ -206,7 +208,7 @@ public class EntradaTaller extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
