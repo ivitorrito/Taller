@@ -8,6 +8,8 @@ package com.onmotor.taller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -463,19 +465,20 @@ public class EntradaTaller extends javax.swing.JFrame {
             ps = con.prepareStatement(sql);
             ps.setString(1, txtMatricula.getText());
             ps.setString(2, txtBastidor.getText());
-            ps.setString(3, txtMarca.getItemAt(WIDTH));
+            ps.setString(3, txtMarca.getSelectedItem().toString());
             ps.setString(4, txtColor.getText());
             ps.setString(5, txtKilometros.getText());
-            ps.setString(6, txtCombustible.getItemAt(WIDTH));
-            ps.setString(7, txtFecha.getDate().toString());
+            ps.setString(6, txtCombustible.getSelectedItem().toString());
+            ps.setString(7, ((JTextField)txtFecha.getDateEditor().getUiComponent()).getText());
             ps.setString(8, txtModelo.getText());
-            ps.setString(9, txtItv.getDate().toString());
+            ps.setString(9, ((JTextField)txtItv.getDateEditor().getUiComponent()).getText());
             ps.setString(10, txtTipoMotor.getText());
             ps.setString(11, txtCilindrada.getText());
             ps.setString(12, txtCv.getText());
             
             ps.execute();
             System.out.println("realizado con exito");
+            JOptionPane.showMessageDialog(null,"Registro exitoso");
 
         } catch (SQLException e) {
         }
