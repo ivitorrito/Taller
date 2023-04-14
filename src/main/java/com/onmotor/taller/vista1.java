@@ -65,6 +65,7 @@ public class vista1 extends javax.swing.JFrame {
         }
 
         dtm_datos = new DefaultTableModel(M_datos, Titulos) { //ahora agregaremos la matriz y los titulos al modelo de tabla
+            @Override
             public boolean isCellEditable(int row, int column) {//este metodo es muy util si no quieren que editen su tabla, 
                 return false;  //si quieren modificar los campos al dar clic entonces borren este metodo
             }
@@ -178,7 +179,7 @@ public class vista1 extends javax.swing.JFrame {
                 }
                 
                     M_datos = new String[valor][4];
-                    rs = st_cont.executeQuery("SELECT * FROM coche WHERE marca LIKE'" + jt_buscador.getText() + "%'"); //aqui es donde buscaremos a a la persona en especifico o las personas
+                    rs = st_cont.executeQuery("SELECT * FROM Coche WHERE matricula LIKE'" + jt_buscador.getText() + "%'"); //aqui es donde buscaremos a a la persona en especifico o las personas
                     while (rs.next()) {
                         M_datos[cont][0] = rs.getString("matricula");
                         M_datos[cont][1] = rs.getString("marca");
