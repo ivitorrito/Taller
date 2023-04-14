@@ -477,11 +477,36 @@ public class EntradaTaller extends javax.swing.JFrame {
             ps.setString(12, txtCv.getText());
             
             ps.execute();
-            System.out.println("realizado con exito");
-            JOptionPane.showMessageDialog(null,"Registro exitoso");
+            System.out.println("coche guardado");
+           
 
         } catch (SQLException e) {
         }
+        String sqlClientes = "insert into Clientes (nombre,apellido,correo,dni,telefono,direccion,numeropiso,cp,poblacion,ciudad)values(?,?,?,?,?,?,?,?,?,?)";
+        try {
+            ConexionMysql conectar = new ConexionMysql();
+            PreparedStatement ps;
+            Connection con = conectar.getConnection();
+
+            ps = con.prepareStatement(sqlClientes);
+            ps.setString(1, txtNombre.getText());
+            ps.setString(2, txtApellido.getText());
+            ps.setString(3, txtCorreo.getText());
+            ps.setString(4, txtDni.getText());
+            ps.setString(5, txtTelefono.getText());
+            ps.setString(6, txtDireccion.getText());
+            ps.setString(7, txtNumeroPiso.getText());
+            ps.setString(8, txtCp.getText());
+            ps.setString(9, txtPoblacion.getText());
+            ps.setString(10, txtCiudad.getText());
+           
+            
+            ps.execute();
+            
+
+        } catch (SQLException e) {
+        }
+         JOptionPane.showMessageDialog(null,"Registro exitoso");
     }//GEN-LAST:event_AgregarClienteActionPerformed
 
     /**
