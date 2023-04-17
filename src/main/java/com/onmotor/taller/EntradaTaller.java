@@ -467,7 +467,7 @@ public class EntradaTaller extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -633,10 +633,10 @@ public class EntradaTaller extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextArea txtAveria;
-    private javax.swing.JTextField txtBastidor;
+    public javax.swing.JTextField txtBastidor;
     private javax.swing.JTextField txtCilindrada;
     private javax.swing.JTextField txtCiudad;
-    private javax.swing.JTextField txtColor;
+    public javax.swing.JTextField txtColor;
     private javax.swing.JComboBox<String> txtCombustible;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtCp;
@@ -646,8 +646,8 @@ public class EntradaTaller extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtFecha;
     private com.toedter.calendar.JDateChooser txtItv;
     private javax.swing.JTextField txtKilometros;
-    private javax.swing.JComboBox<String> txtMarca;
-    private javax.swing.JTextField txtMatricula;
+    public javax.swing.JComboBox<String> txtMarca;
+    public javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNumeroPiso;
