@@ -105,7 +105,7 @@ public class vista1 extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jtable_datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
