@@ -136,6 +136,11 @@ public class vista1 extends javax.swing.JFrame {
         });
 
         jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Buscar");
 
@@ -229,6 +234,11 @@ public class vista1 extends javax.swing.JFrame {
      entradataller.txtMatricula.setText(jtable_datos.getValueAt(fila, 0).toString());
    
     }//GEN-LAST:event_jtable_datosMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       CrearCliente crearcliente = new CrearCliente();
+       crearcliente.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
