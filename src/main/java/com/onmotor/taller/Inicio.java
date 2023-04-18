@@ -141,7 +141,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        EntradaTaller nuevocoche = new EntradaTaller();
+       vista1 nuevocoche = new vista1();
         nuevocoche.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
