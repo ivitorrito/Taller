@@ -453,7 +453,7 @@ public class CrearCliente extends javax.swing.JFrame {
         } catch (SQLException e) {
         }
         JOptionPane.showMessageDialog(null,"Registro exitoso");
-        
+       this.dispose();
     }//GEN-LAST:event_AgregarClienteCActionPerformed
 
     /**
