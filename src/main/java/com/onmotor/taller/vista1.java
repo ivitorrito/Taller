@@ -107,6 +107,8 @@ public class vista1 extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(100, 100));
+        setLocationByPlatform(true);
 
         jtable_datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -186,6 +188,7 @@ public class vista1 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jt_buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_buscadorKeyReleased
