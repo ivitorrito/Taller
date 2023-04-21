@@ -19,7 +19,7 @@ import javax.swing.table.TableRowSorter;
  */
 public class vista1 extends javax.swing.JFrame {
 
-    String[] Titulos = {"MATRICULA", "MARCA", "MODELO", "FECHA"}; //Arreglo de los titulos para la tabla
+    String[] Titulos = {"MATRICULA", "MARCA", "MODELO", "ID"}; //Arreglo de los titulos para la tabla
     DefaultTableModel dtm_datos = new DefaultTableModel(); //creamos  un modelo para la taba de datos
     TableRowSorter<TableModel> trs; //Hacemos el table row sorter para poder ordenar la tabla al presionar los encabezados de la misma
     ResultSet rs;  //el result set es el resultado de la consulta que mandamos por sql
@@ -48,7 +48,7 @@ public class vista1 extends javax.swing.JFrame {
 
             
             Statement st = cn.createStatement(); //ahora vamos a  hacer lo mismo solo que esta vez no obtendremos el numero de filas en la tabla
-            rs = st.executeQuery("SELECT matricula,marca,modelo,fechamatriculacion FROM Coche"); //aora obtendremos los datos de la tabla para mostrarlos en el jtable
+            rs = st.executeQuery("SELECT matricula,marca,modelo,id FROM Coche"); //aora obtendremos los datos de la tabla para mostrarlos en el jtable
             
             int cont = 0; //el contador nos ayudara para movernos en las filas de la matriz mientras que los numeros fijos (0,1,2,3) nos moveran por las 4 columnas que seran el id, nombre, etc
             M_datos = new String[contador][4]; //definimos el tamaño de la matriz 
@@ -56,7 +56,7 @@ public class vista1 extends javax.swing.JFrame {
                 M_datos[cont][0] = rs.getString("matricula");    //agregamos los datos a la table
                 M_datos[cont][1] = rs.getString("marca");
                 M_datos[cont][2] = rs.getString("modelo");
-                M_datos[cont][3] = rs.getString("fechamatriculacion");
+                M_datos[cont][3] = rs.getString("id");
                 cont = cont + 1; //avanzamos una posicion del contador para que pase a la siguiente fila
             }
 
@@ -209,7 +209,7 @@ public class vista1 extends javax.swing.JFrame {
                         M_datos[cont][0] = rs.getString("matricula");
                         M_datos[cont][1] = rs.getString("marca");
                         M_datos[cont][2] = rs.getString("modelo");
-                        M_datos[cont][3] = rs.getString("fechamatriculacion");
+                        M_datos[cont][3] = rs.getString("id");
                         cont = cont + 1;
                     }
                     dtm_datos = new DefaultTableModel(M_datos, Titulos) {
@@ -234,7 +234,7 @@ public class vista1 extends javax.swing.JFrame {
         EntradaTaller entradataller = new EntradaTaller();
      entradataller.setVisible(true);
      int fila = jtable_datos.rowAtPoint(evt.getPoint());
-     entradataller.txtMatricula.setText(jtable_datos.getValueAt(fila, 0).toString());
+     entradataller.txtId.setText(jtable_datos.getValueAt(fila, 3).toString());
    
     }//GEN-LAST:event_jtable_datosMouseClicked
 
