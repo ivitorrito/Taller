@@ -235,7 +235,8 @@ public class vista1 extends javax.swing.JFrame {
      entradataller.setVisible(true);
      int fila = jtable_datos.rowAtPoint(evt.getPoint());
      entradataller.txtId.setText(jtable_datos.getValueAt(fila, 3).toString());
-   
+  
+
     }//GEN-LAST:event_jtable_datosMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

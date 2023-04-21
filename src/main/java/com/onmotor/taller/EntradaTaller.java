@@ -7,6 +7,7 @@ package com.onmotor.taller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -17,10 +18,24 @@ import javax.swing.JTextField;
  */
 public class EntradaTaller extends javax.swing.JFrame {
 
-   
     public EntradaTaller() {
         initComponents();
-        
+        try {
+            String sql = "SELECT * FROM Coche WHERE id=?" ;
+            ConexionMysql conectar4 = new ConexionMysql();
+            PreparedStatement ps;
+            Connection con = conectar4.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, txtId.getText());
+            ResultSet rs = ps.executeQuery();
+
+            txtMatricula.setText(rs.getString(1));
+            // ps.execute();   
+            System.out.println(txtId.getText());
+        } catch (SQLException ex) {
+            System.err.println(ex.toString());
+        }
+
     }
 
     /**
@@ -522,12 +537,12 @@ public class EntradaTaller extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      vista1 vista = new vista1();
-      vista.setVisible(true);
+        vista1 vista = new vista1();
+        vista.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-   String sqlAveria = "insert into Averia (averia,observaciones)values(?,?)";
+        String sqlAveria = "insert into Averia (averia,observaciones)values(?,?)";
         try {
             ConexionMysql conectar = new ConexionMysql();
             PreparedStatement ps;
@@ -536,16 +551,13 @@ public class EntradaTaller extends javax.swing.JFrame {
             ps = con.prepareStatement(sqlAveria);
             ps.setString(1, txtAveria.getText());
             ps.setString(2, txtObservaciones.getText());
-           
-            
+
             ps.execute();
-            
 
         } catch (SQLException e) {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
