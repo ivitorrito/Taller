@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 public class EntradaTaller extends javax.swing.JFrame {
 
     public EntradaTaller() {
-        initComponents();
+      initComponents();
         try {
             String sql = "SELECT * FROM Coche WHERE id="+txtId.getText();
             ConexionMysql conectar4 = new ConexionMysql();
