@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.onmotor.taller;
 
 import java.sql.Connection;
@@ -12,24 +7,20 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Taller
- */
 public class EntradaTaller extends javax.swing.JFrame {
 
     public EntradaTaller() {
         initComponents();
         try {
-            String sql = "SELECT * FROM Coche WHERE id=?" ;
+            String sql = "SELECT * FROM Coche WHERE id="+txtId.getText();
             ConexionMysql conectar4 = new ConexionMysql();
             PreparedStatement ps;
             Connection con = conectar4.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, txtId.getText());
-            ResultSet rs = ps.executeQuery();
+           // ps.setString(1, txtId.getText());
+            ResultSet rs = ps.executeQuery(sql);
 
-            txtMatricula.setText(rs.getString(1));
+            txtMatricula.setText(rs.getString(2));
             // ps.execute();   
             System.out.println(txtId.getText());
         } catch (SQLException ex) {
