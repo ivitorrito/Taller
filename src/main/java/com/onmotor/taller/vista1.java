@@ -234,15 +234,21 @@ public class vista1 extends javax.swing.JFrame {
         int fila = jtable_datos.rowAtPoint(evt.getPoint());
         entradataller.txtId.setText(jtable_datos.getValueAt(fila, 3).toString());
         try {
-            String sql5 = "SELECT matricula FROM Coche WHERE id=" + jtable_datos.getValueAt(fila, 3).toString() + "";
+            String sql5 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Coche WHERE id=" + jtable_datos.getValueAt(fila, 3).toString() + "";
             System.out.println(sql5);
             ConexionMysql conectar4 = new ConexionMysql();
             PreparedStatement ps;
             Connection con = conectar4.getConnection();
             ps = con.prepareStatement(sql5);
             ResultSet rs1 = ps.executeQuery();
-            rs1.next();
-            entradataller.txtMatricula.setText(rs1.getString(1));
+           rs1.next();
+               entradataller.txtMatricula.setText(rs1.getString(1));
+               entradataller.txtBastidor.setText(rs1.getString(2));
+               entradataller.txtMarca.setText(rs1.getString(3));
+               entradataller.txtColor.setText(rs1.getString(4));
+               
+            
+           
 
         } catch (SQLException ex) {
             System.err.println(ex.toString());
