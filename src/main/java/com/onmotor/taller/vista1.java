@@ -5,7 +5,6 @@
  */
 package com.onmotor.taller;
 
-
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.logging.Level;
@@ -36,20 +35,19 @@ public class vista1 extends javax.swing.JFrame {
     }
 
     private void datos_tabla() {
-       
+
         int contador = 0;  //creamos un contador para saber el numero de datos que obtendremos de la tabla datos de sql
         try { //para las consultas sql siempre vamos a ocupar un try catch por su ocurre un error
             Statement st_cont = cn.createStatement(); //el statement nos ayuda a procesar una sentencia sql 
             ResultSet rs_cont = st_cont.executeQuery("SELECT COUNT(*) FROM Coche"); // asignamos los datos obtenidos de la consulta al result set
-             if (rs_cont.next()) {
+            if (rs_cont.next()) {
                 contador = rs_cont.getInt(1);
             }
 //lo anterior fue solo para conocer el numero de datos que manejariamos esto mediante logra gracias con count de sql y con el  * le decimos que nos cuenta todas las filas de la tabla
 
-            
             Statement st = cn.createStatement(); //ahora vamos a  hacer lo mismo solo que esta vez no obtendremos el numero de filas en la tabla
             rs = st.executeQuery("SELECT matricula,marca,modelo,id FROM Coche"); //aora obtendremos los datos de la tabla para mostrarlos en el jtable
-            
+
             int cont = 0; //el contador nos ayudara para movernos en las filas de la matriz mientras que los numeros fijos (0,1,2,3) nos moveran por las 4 columnas que seran el id, nombre, etc
             M_datos = new String[contador][4]; //definimos el tamaño de la matriz 
             while (rs.next()) { //el while nos ayudara a recorrer los datos obtenidos en la consulta anterior y asignarlos a la matriz  
@@ -196,52 +194,66 @@ public class vista1 extends javax.swing.JFrame {
         int valor = 0;
         int cont = 0;
         String aux = "" + jt_buscador.getText();//aqui obtenemos cada letra que ingresemos en el textfield en tiempo real
-            try {
-                Statement st_cont = cn.createStatement(); //hacemos lo mismo que con el metodo mostrar, buscamos el numero de filas dela tabla
-                rs = st_cont.executeQuery("SELECT COUNT(*) FROM Coche WHERE matricula LIKE'" + jt_buscador.getText() + "%'");//solo que esta ves usamos like
-                if (rs.next()) {// like nos ayudara a buscar nombres que tengan similitudes con lo que estamos escribiendo en el texfield
-                    valor = rs.getInt(1); //una vez que obtenimos el numero de filas continuamos a sacar  el valor que buscamos
+        try {
+            Statement st_cont = cn.createStatement(); //hacemos lo mismo que con el metodo mostrar, buscamos el numero de filas dela tabla
+            rs = st_cont.executeQuery("SELECT COUNT(*) FROM Coche WHERE matricula LIKE'" + jt_buscador.getText() + "%'");//solo que esta ves usamos like
+            if (rs.next()) {// like nos ayudara a buscar nombres que tengan similitudes con lo que estamos escribiendo en el texfield
+                valor = rs.getInt(1); //una vez que obtenimos el numero de filas continuamos a sacar  el valor que buscamos
+            }
+
+            M_datos = new String[valor][4];
+            rs = st_cont.executeQuery("SELECT * FROM Coche WHERE matricula LIKE'" + jt_buscador.getText() + "%'"); //aqui es donde buscaremos a a la persona en especifico o las personas
+            while (rs.next()) {
+                M_datos[cont][0] = rs.getString("matricula");
+                M_datos[cont][1] = rs.getString("marca");
+                M_datos[cont][2] = rs.getString("modelo");
+                M_datos[cont][3] = rs.getString("id");
+                cont = cont + 1;
+            }
+            dtm_datos = new DefaultTableModel(M_datos, Titulos) {
+                public boolean isCellEditable(int row, int column) {//este metodo es muy util si no quieren que editen su tabla, 
+                    return false;  //si quieren modificar los campos al dar clic entonces borren este metodo
                 }
-                
-                    M_datos = new String[valor][4];
-                    rs = st_cont.executeQuery("SELECT * FROM Coche WHERE matricula LIKE'" + jt_buscador.getText() + "%'"); //aqui es donde buscaremos a a la persona en especifico o las personas
-                    while (rs.next()) {
-                        M_datos[cont][0] = rs.getString("matricula");
-                        M_datos[cont][1] = rs.getString("marca");
-                        M_datos[cont][2] = rs.getString("modelo");
-                        M_datos[cont][3] = rs.getString("id");
-                        cont = cont + 1;
-                    }
-                    dtm_datos = new DefaultTableModel(M_datos, Titulos) {
-                        public boolean isCellEditable(int row, int column) {//este metodo es muy util si no quieren que editen su tabla, 
-                return false;  //si quieren modificar los campos al dar clic entonces borren este metodo
-            }
-                    };
-                    jtable_datos.setModel(dtm_datos);
-                    trs = new TableRowSorter<>(dtm_datos);
-                    jtable_datos.setRowSorter(trs);
-              
-            } catch (Exception e) {
-            }
+            };
+            jtable_datos.setModel(dtm_datos);
+            trs = new TableRowSorter<>(dtm_datos);
+            jtable_datos.setRowSorter(trs);
+
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jt_buscadorKeyReleased
 
     private void jt_buscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_buscadorKeyPressed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jt_buscadorKeyPressed
 
     private void jtable_datosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_datosMouseClicked
         EntradaTaller entradataller = new EntradaTaller();
-     entradataller.setVisible(true);
-     int fila = jtable_datos.rowAtPoint(evt.getPoint());
-     entradataller.txtId.setText(jtable_datos.getValueAt(fila, 3).toString());
-  
+        entradataller.setVisible(true);
+        int fila = jtable_datos.rowAtPoint(evt.getPoint());
+        entradataller.txtId.setText(jtable_datos.getValueAt(fila, 3).toString());
+        try {
+            String sql5 = "SELECT matricula FROM Coche WHERE id=" + jtable_datos.getValueAt(fila, 3).toString() + "";
+            System.out.println(sql5);
+            ConexionMysql conectar4 = new ConexionMysql();
+            PreparedStatement ps;
+            Connection con = conectar4.getConnection();
+            ps = con.prepareStatement(sql5);
+            ResultSet rs1 = ps.executeQuery();
+            rs1.next();
+            entradataller.txtMatricula.setText(rs1.getString(1));
+
+        } catch (SQLException ex) {
+            System.err.println(ex.toString());
+        }
+
 
     }//GEN-LAST:event_jtable_datosMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       CrearCliente crearcliente = new CrearCliente();
-       crearcliente.setVisible(true);
+        CrearCliente crearcliente = new CrearCliente();
+        crearcliente.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

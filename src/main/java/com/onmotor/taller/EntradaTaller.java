@@ -10,22 +10,7 @@ import javax.swing.JTextField;
 public class EntradaTaller extends javax.swing.JFrame {
 
     public EntradaTaller() {
-      initComponents();
-        try {
-            String sql = "SELECT * FROM Coche WHERE id="+txtId.getText();
-            ConexionMysql conectar4 = new ConexionMysql();
-            PreparedStatement ps;
-            Connection con = conectar4.getConnection();
-            ps = con.prepareStatement(sql);
-           // ps.setString(1, txtId.getText());
-            ResultSet rs = ps.executeQuery(sql);
-
-            txtMatricula.setText(rs.getString(2));
-            // ps.execute();   
-            System.out.println(txtId.getText());
-        } catch (SQLException ex) {
-            System.err.println(ex.toString());
-        }
+        initComponents();
 
     }
 
@@ -65,7 +50,6 @@ public class EntradaTaller extends javax.swing.JFrame {
         txtCv = new javax.swing.JTextField();
         txtColor = new javax.swing.JTextField();
         txtKilometros = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -188,13 +172,6 @@ public class EntradaTaller extends javax.swing.JFrame {
 
         txtKilometros.setEditable(false);
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Id");
 
         txtId.setEditable(false);
@@ -225,11 +202,8 @@ public class EntradaTaller extends javax.swing.JFrame {
                             .addComponent(txtMarca, 0, 180, Short.MAX_VALUE)
                             .addComponent(txtColor)
                             .addComponent(txtKilometros)
-                            .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                            .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel47)
                             .addComponent(jLabel49)
@@ -269,8 +243,7 @@ public class EntradaTaller extends javax.swing.JFrame {
                     .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel50)
                     .addComponent(jLabel43)
-                    .addComponent(txtCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -527,11 +500,6 @@ public class EntradaTaller extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        vista1 vista = new vista1();
-        vista.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String sqlAveria = "insert into Averia (averia,observaciones)values(?,?)";
         try {
@@ -551,7 +519,6 @@ public class EntradaTaller extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
