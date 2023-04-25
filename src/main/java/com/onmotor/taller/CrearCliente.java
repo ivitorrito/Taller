@@ -408,32 +408,7 @@ public class CrearCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoCActionPerformed
 
     private void AgregarClienteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClienteCActionPerformed
-        String sql = "insert into Coche (matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv)values(?,?,?,?,?,?,?,?,?,?,?,?)";
-        try {
-            ConexionMysql conectar = new ConexionMysql();
-            PreparedStatement ps;
-            Connection con = conectar.getConnection();
-
-            ps = con.prepareStatement(sql);
-            ps.setString(1, txtMatriculaC.getText());
-            ps.setString(2, txtBastidorC.getText());
-            ps.setString(3, txtMarcaC.getSelectedItem().toString());
-            ps.setString(4, txtColorC.getText());
-            ps.setString(5, txtKilometrosC.getText());
-            ps.setString(6, txtCombustibleC.getSelectedItem().toString());
-            ps.setString(7, ((JTextField)txtFechaC.getDateEditor().getUiComponent()).getText());
-            ps.setString(8, txtModeloC.getText());
-            ps.setString(9, ((JTextField)txtItvC.getDateEditor().getUiComponent()).getText());
-            ps.setString(10, txtTipoMotorC.getText());
-            ps.setString(11, txtCilindradaC.getText());
-            ps.setString(12, txtCvC.getText());
-
-            ps.execute();
-            System.out.println("coche guardado");
-
-        } catch (SQLException e) {
-        }
-        String sqlClientes = "insert into Clientes (nombre,apellido,correo,dni,telefono,direccion,numeropiso,cp,poblacion,ciudad)values(?,?,?,?,?,?,?,?,?,?)";
+       String sqlClientes = "insert into Clientes (nombre,apellido,correo,dni,telefono,direccion,numeropiso,cp,poblacion,ciudad)values(?,?,?,?,?,?,?,?,?,?)";
         try {
             ConexionMysql conectar = new ConexionMysql();
             PreparedStatement ps;
@@ -455,6 +430,34 @@ public class CrearCliente extends javax.swing.JFrame {
 
         } catch (SQLException e) {
         }
+        String sql = "insert into Coche (matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv,id_cliente)values(?,?,?,?,?,?,?,?,?,?,?,?,(select id from Clientes where dni=?))";
+        try {
+            ConexionMysql conectar = new ConexionMysql();
+            PreparedStatement ps;
+            Connection con = conectar.getConnection();
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, txtMatriculaC.getText());
+            ps.setString(2, txtBastidorC.getText());
+            ps.setString(3, txtMarcaC.getSelectedItem().toString());
+            ps.setString(4, txtColorC.getText());
+            ps.setString(5, txtKilometrosC.getText());
+            ps.setString(6, txtCombustibleC.getSelectedItem().toString());
+            ps.setString(7, ((JTextField)txtFechaC.getDateEditor().getUiComponent()).getText());
+            ps.setString(8, txtModeloC.getText());
+            ps.setString(9, ((JTextField)txtItvC.getDateEditor().getUiComponent()).getText());
+            ps.setString(10, txtTipoMotorC.getText());
+            ps.setString(11, txtCilindradaC.getText());
+            ps.setString(12, txtCvC.getText());
+            ps.setString(13, txtDniC.getText());
+           
+
+            ps.execute();
+            System.out.println("coche guardado");
+
+        } catch (SQLException e) {
+        }
+        
         JOptionPane.showMessageDialog(null,"Registro exitoso");
        this.dispose();
     }//GEN-LAST:event_AgregarClienteCActionPerformed
