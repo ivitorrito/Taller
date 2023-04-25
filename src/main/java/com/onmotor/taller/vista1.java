@@ -241,15 +241,19 @@ public class vista1 extends javax.swing.JFrame {
             Connection con = conectar4.getConnection();
             ps = con.prepareStatement(sql5);
             ResultSet rs1 = ps.executeQuery();
-           rs1.next();
-               entradataller.txtMatricula.setText(rs1.getString(1));
-               entradataller.txtBastidor.setText(rs1.getString(2));
-               entradataller.txtMarca.setText(rs1.getString(3));
-               entradataller.txtColor.setText(rs1.getString(4));
-               
-            
-           
-
+            rs1.next();
+            entradataller.txtMatricula.setText(rs1.getString(1));
+            entradataller.txtBastidor.setText(rs1.getString(2));
+            entradataller.txtMarca.setText(rs1.getString(3));
+            entradataller.txtColor.setText(rs1.getString(4));
+            entradataller.txtKilometros.setText(rs1.getString(5));
+            entradataller.txtCombustible.setText(rs1.getString(6));
+            entradataller.txtFecha.setText(rs1.getString(7));
+            entradataller.txtModelo.setText(rs1.getString(8));
+            entradataller.txtItv.setText(rs1.getString(9));
+            entradataller.txtTipoMotor.setText(rs1.getString(10));
+            entradataller.txtCilindrada.setText(rs1.getString(11));
+            entradataller.txtCv.setText(rs1.getString(12));
         } catch (SQLException ex) {
             System.err.println(ex.toString());
         }

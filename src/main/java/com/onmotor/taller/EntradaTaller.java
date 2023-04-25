@@ -31,13 +31,10 @@ public class EntradaTaller extends javax.swing.JFrame {
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        txtFecha = new com.toedter.calendar.JDateChooser();
         jLabel48 = new javax.swing.JLabel();
         txtModelo = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
-        txtItv = new com.toedter.calendar.JDateChooser();
         jLabel50 = new javax.swing.JLabel();
-        txtCombustible = new javax.swing.JComboBox<>();
         jLabel51 = new javax.swing.JLabel();
         txtBastidor = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
@@ -52,6 +49,9 @@ public class EntradaTaller extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         txtMarca = new javax.swing.JTextField();
+        txtCombustible = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        txtItv = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -102,11 +102,7 @@ public class EntradaTaller extends javax.swing.JFrame {
 
         jLabel49.setText("ITV");
 
-        txtItv.setMaxSelectableDate(new java.util.Date(253370764919000L));
-
         jLabel50.setText("Combustible");
-
-        txtCombustible.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diesel", "Gasolina", "Electrico", "Hibrido" }));
 
         jLabel51.setText("Nº Bastidor");
 
@@ -198,7 +194,7 @@ public class EntradaTaller extends javax.swing.JFrame {
                             .addComponent(txtKilometros)
                             .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMarca))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGap(63, 63, 63)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel47)
                             .addComponent(jLabel49)
@@ -207,16 +203,14 @@ public class EntradaTaller extends javax.swing.JFrame {
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
-                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel12Layout.createSequentialGroup()
-                                            .addGap(1, 1, 1)
-                                            .addComponent(txtItv, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCombustible)
+                                    .addComponent(txtFecha)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                    .addComponent(txtItv)))))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -233,7 +227,7 @@ public class EntradaTaller extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel50)
@@ -254,11 +248,11 @@ public class EntradaTaller extends javax.swing.JFrame {
                             .addComponent(jLabel46)
                             .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel47)
                             .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel45)
                             .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -266,8 +260,8 @@ public class EntradaTaller extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel48)
                     .addComponent(jLabel49)
-                    .addComponent(txtItv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtKilometros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtKilometros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtItv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
@@ -546,27 +540,27 @@ public class EntradaTaller extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextArea txtAveria;
     public javax.swing.JTextField txtBastidor;
-    private javax.swing.JTextField txtCilindrada;
+    public javax.swing.JTextField txtCilindrada;
     private javax.swing.JTextField txtCiudad;
     public javax.swing.JTextField txtColor;
-    private javax.swing.JComboBox<String> txtCombustible;
+    public javax.swing.JTextField txtCombustible;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtCp;
-    private javax.swing.JTextField txtCv;
+    public javax.swing.JTextField txtCv;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDni;
-    private com.toedter.calendar.JDateChooser txtFecha;
+    public javax.swing.JTextField txtFecha;
     public javax.swing.JTextField txtId;
-    private com.toedter.calendar.JDateChooser txtItv;
-    private javax.swing.JTextField txtKilometros;
+    public javax.swing.JTextField txtItv;
+    public javax.swing.JTextField txtKilometros;
     public javax.swing.JTextField txtMarca;
     public javax.swing.JTextField txtMatricula;
-    private javax.swing.JTextField txtModelo;
+    public javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNumeroPiso;
     private javax.swing.JTextArea txtObservaciones;
     private javax.swing.JTextField txtPoblacion;
     private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtTipoMotor;
+    public javax.swing.JTextField txtTipoMotor;
     // End of variables declaration//GEN-END:variables
 }
