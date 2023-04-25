@@ -235,7 +235,6 @@ public class vista1 extends javax.swing.JFrame {
         entradataller.txtId.setText(jtable_datos.getValueAt(fila, 3).toString());
         try {
             String sql5 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Coche WHERE id=" + jtable_datos.getValueAt(fila, 3).toString() + "";
-            System.out.println(sql5);
             ConexionMysql conectar4 = new ConexionMysql();
             PreparedStatement ps;
             Connection con = conectar4.getConnection();
