@@ -5,6 +5,7 @@
  */
 package com.onmotor.taller;
 
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -191,7 +192,8 @@ public class vista1 extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         CrearCliente crearcliente = new CrearCliente();
-        crearcliente.setVisible(true);
+       crearcliente.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jt_buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_buscadorKeyReleased
