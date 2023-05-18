@@ -89,9 +89,9 @@ public class PanelPresupuestos extends javax.swing.JFrame {
 
         jLabel2.setText("Matricula");
 
-        jLabel3.setBackground(new java.awt.Color(0, 0, 255));
+        jLabel3.setBackground(new java.awt.Color(255, 0, 255));
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel3.setForeground(new java.awt.Color(255, 0, 204));
         jLabel3.setText("Repuestos");
 
         jLabel4.setText("Intervencion");
