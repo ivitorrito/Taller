@@ -90,7 +90,6 @@ public class vista11 extends javax.swing.JFrame {
         jtable_datos = new javax.swing.JTable();
         jt_buscador = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -142,13 +141,6 @@ public class vista11 extends javax.swing.JFrame {
 
         jLabel1.setText("Buscar");
 
-        jButton1.setText("Crear");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -159,9 +151,7 @@ public class vista11 extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jt_buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(163, 163, 163)
-                        .addComponent(jButton1))
+                        .addComponent(jt_buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -170,14 +160,13 @@ public class vista11 extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jt_buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -246,10 +235,10 @@ public class vista11 extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_buscadorKeyPressed
 
     private void jtable_datosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_datosMouseClicked
-        EntradaTaller entradataller = new EntradaTaller();
-        entradataller.setVisible(true);
+        PanelPresupuestos panel = new PanelPresupuestos();
+        panel.setVisible(true);
         int fila = jtable_datos.rowAtPoint(evt.getPoint());
-        entradataller.txtId.setText(jtable_datos.getValueAt(fila, 3).toString());
+        panel.TxtId.setText(jtable_datos.getValueAt(fila, 3).toString());
         try {
             String sql5 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Coche WHERE id=" + jtable_datos.getValueAt(fila, 3).toString() + "";
             ConexionMysql conectar4 = new ConexionMysql();
@@ -258,33 +247,18 @@ public class vista11 extends javax.swing.JFrame {
             ps = con.prepareStatement(sql5);
             ResultSet rs1 = ps.executeQuery();
             rs1.next();
-            entradataller.txtMatricula.setText(rs1.getString(1));
-            entradataller.txtBastidor.setText(rs1.getString(2));
-            entradataller.txtMarca.setText(rs1.getString(3));
-            entradataller.txtColor.setText(rs1.getString(4));
-            entradataller.txtKilometros.setText(rs1.getString(5));
-            entradataller.txtCombustible.setText(rs1.getString(6));
-            entradataller.txtFecha.setText(rs1.getString(7));
-            entradataller.txtModelo.setText(rs1.getString(8));
-            entradataller.txtItv.setText(rs1.getString(9));
-            entradataller.txtTipoMotor.setText(rs1.getString(10));
-            entradataller.txtCilindrada.setText(rs1.getString(11));
-            entradataller.txtCv.setText(rs1.getString(12));
+            panel.NombreCliente.setText(rs1.getString(2));
+            panel.MatriculaCliente.setText(rs1.getString(1));
+          
         } catch (SQLException ex) {
             System.err.println(ex.toString());
         }
 
-
+dispose();
     }//GEN-LAST:event_jtable_datosMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CrearCliente crearcliente = new CrearCliente();
-        crearcliente.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
