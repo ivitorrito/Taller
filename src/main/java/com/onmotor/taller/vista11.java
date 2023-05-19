@@ -240,7 +240,7 @@ public class vista11 extends javax.swing.JFrame {
         int fila = jtable_datos.rowAtPoint(evt.getPoint());
         panel.TxtId.setText(jtable_datos.getValueAt(fila, 3).toString());
         try {
-            String sql5 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Coche WHERE id=" + jtable_datos.getValueAt(fila, 3).toString() + "";
+            String sql5 = "SELECT matricula,id_cliente FROM Coche WHERE id=" + jtable_datos.getValueAt(fila, 3).toString() + "";
             ConexionMysql conectar4 = new ConexionMysql();
             PreparedStatement ps;
             Connection con = conectar4.getConnection();
