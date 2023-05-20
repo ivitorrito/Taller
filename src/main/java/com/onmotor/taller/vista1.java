@@ -100,6 +100,10 @@ public class vista1 extends javax.swing.JPanel {
         content.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 153), 2, true));
         content.setPreferredSize(new java.awt.Dimension(701, 530));
 
+        jtable_datos.setBackground(new java.awt.Color(204, 204, 204));
+        jtable_datos.setBorder(null);
+        jtable_datos.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jtable_datos.setForeground(new java.awt.Color(0, 0, 0));
         jtable_datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -111,6 +115,9 @@ public class vista1 extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtable_datos.setGridColor(new java.awt.Color(255, 102, 255));
+        jtable_datos.setSelectionBackground(new java.awt.Color(255, 51, 255));
+        jtable_datos.setSelectionForeground(new java.awt.Color(255, 0, 153));
         jtable_datos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtable_datosMouseClicked(evt);
@@ -225,7 +232,7 @@ public class vista1 extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jt_buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_buscadorKeyReleased
-        // TODO add your handling code here:
+       
         int valor = 0;
         int cont = 0;
         String aux = "" + jt_buscador.getText();//aqui obtenemos cada letra que ingresemos en el textfield en tiempo real
@@ -263,6 +270,8 @@ public class vista1 extends javax.swing.JPanel {
     }//GEN-LAST:event_jt_buscadorKeyPressed
 
     private void jtable_datosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_datosMouseClicked
+       if(evt.getClickCount()==2){
+        
         EntradaTaller entradataller = new EntradaTaller();
         entradataller.setVisible(true);
         int fila = jtable_datos.rowAtPoint(evt.getPoint());
@@ -289,7 +298,7 @@ public class vista1 extends javax.swing.JPanel {
             entradataller.txtCv.setText(rs1.getString(12));
         } catch (SQLException ex) {
             System.err.println(ex.toString());
-        }
+        }}
     }//GEN-LAST:event_jtable_datosMouseClicked
 
 

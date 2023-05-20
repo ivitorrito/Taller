@@ -1,45 +1,37 @@
-
 package com.onmotor.taller;
-
 
 import com.formdev.flatlaf.intellijthemes.FlatDraculaIJTheme;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Image;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-
 
 public class Inicio extends javax.swing.JFrame {
 
     public Inicio() {
         initComponents();
         cargarImagen();
-        
-       
-      
+
         vista1 nuevocoche = new vista1();
-       nuevocoche.setSize(700,580);
-       nuevocoche.setLocation(0,0);
-       content.removeAll();
-        content.add(nuevocoche,BorderLayout.CENTER);
+        nuevocoche.setSize(700, 580);
+        nuevocoche.setLocation(0, 0);
+        content.removeAll();
+        content.add(nuevocoche, BorderLayout.CENTER);
         content.repaint();
- 
-      
+
     }
-    private void cargarImagen(){
-ImageIcon icon = new ImageIcon("src\\main\\java\\Resource\\logo.png");
-Image img = icon.getImage();
-int alto = img.getHeight(content1);
-int ancho = img.getWidth(content1);
-System.out.println(ancho + " " + alto);
-JLabel lbl = new JLabel();
-lbl.setIcon(icon);
-content1.add(lbl);
-lbl.setBounds(5, 5, ancho, alto);
-}
+
+    private void cargarImagen() {
+        ImageIcon icon = new ImageIcon("src\\main\\java\\Resource\\logo.png");
+        Image img = icon.getImage();
+        int alto = img.getHeight(content1);
+        int ancho = img.getWidth(content1);
+        System.out.println(ancho + " " + alto);
+        JLabel lbl = new JLabel();
+        lbl.setIcon(icon);
+        content1.add(lbl);
+        lbl.setBounds(-4, -5, ancho, alto);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,6 +59,9 @@ lbl.setBounds(5, 5, ancho, alto);
         setMinimumSize(new java.awt.Dimension(874, 724));
         setResizable(false);
 
+        jButton6.setBackground(new java.awt.Color(255, 153, 255));
+        jButton6.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setText("Entrada Taller");
         jButton6.setPreferredSize(new java.awt.Dimension(71, 28));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -75,8 +70,14 @@ lbl.setBounds(5, 5, ancho, alto);
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(255, 153, 255));
+        jButton5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setText("Fr.  Simple");
 
+        jButton2.setBackground(new java.awt.Color(255, 153, 255));
+        jButton2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Coches");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +85,9 @@ lbl.setBounds(5, 5, ancho, alto);
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(255, 153, 255));
+        jButton1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Clientes");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +95,9 @@ lbl.setBounds(5, 5, ancho, alto);
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(255, 153, 255));
+        jButton4.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Facturas");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +105,9 @@ lbl.setBounds(5, 5, ancho, alto);
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(255, 153, 255));
+        jButton3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Presupuestos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +128,7 @@ lbl.setBounds(5, 5, ancho, alto);
             .addGap(0, 580, Short.MAX_VALUE)
         );
 
+        content1.setBorder(null);
         content1.setForeground(new java.awt.Color(255, 0, 204));
         content1.setPreferredSize(new java.awt.Dimension(290, 100));
 
@@ -145,7 +156,7 @@ lbl.setBounds(5, 5, ancho, alto);
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -186,7 +197,7 @@ lbl.setBounds(5, 5, ancho, alto);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -194,8 +205,8 @@ lbl.setBounds(5, 5, ancho, alto);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    PanelPresupuestos panelpresupuestos = new PanelPresupuestos();
-    panelpresupuestos.setVisible(true);
+        PanelPresupuestos panelpresupuestos = new PanelPresupuestos();
+        panelpresupuestos.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -203,11 +214,11 @@ lbl.setBounds(5, 5, ancho, alto);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       vista1 nuevocoche = new vista1();
-       nuevocoche.setSize(700,580);
-       nuevocoche.setLocation(0,0);
-       content.removeAll();
-        content.add(nuevocoche,BorderLayout.CENTER);
+        vista1 nuevocoche = new vista1();
+        nuevocoche.setSize(700, 580);
+        nuevocoche.setLocation(0, 0);
+        content.removeAll();
+        content.add(nuevocoche, BorderLayout.CENTER);
         content.repaint();
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -215,7 +226,7 @@ lbl.setBounds(5, 5, ancho, alto);
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       FlatDraculaIJTheme.setup();
+        FlatDraculaIJTheme.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Inicio().setVisible(true);
