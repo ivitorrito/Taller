@@ -1,4 +1,3 @@
-
 package com.onmotor.taller;
 
 import com.itextpdf.text.BaseColor;
@@ -24,21 +23,21 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class PdfPresupuestos {
+
     public void GeneraPDF() {
         Document document = new Document(PageSize.A4, 20, 20, 20, 20);
         try {
-String nombre = PanelPresupuestos.NombreCliente.getText();
-String matricula = PanelPresupuestos.MatriculaCliente.getText();
+            String nombre = PanelPresupuestos.NombreCliente.getText();
+            String matricula = PanelPresupuestos.MatriculaCliente.getText();
             // El archivo pdf que vamos a generar
-            FileOutputStream fileOutputStream = new FileOutputStream("Prs/"+nombre+matricula+".pdf"); //NOI18N
-            
-         ////////////////////////////////////////////////////////////////   
-        Calendar cal = Calendar.getInstance();
-        Date fecha = new Date( cal.getTimeInMillis() );
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-   
-      
-        ///////////////////////////////////////////////////////
+            FileOutputStream fileOutputStream = new FileOutputStream("Prs/" + nombre + matricula + ".pdf"); //NOI18N
+
+            ////////////////////////////////////////////////////////////////   
+            Calendar cal = Calendar.getInstance();
+            Date fecha = new Date(cal.getTimeInMillis());
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+            ///////////////////////////////////////////////////////
             // Obtener la instancia del PdfWriter
             PdfWriter.getInstance(document, fileOutputStream);
 
@@ -46,8 +45,6 @@ String matricula = PanelPresupuestos.MatriculaCliente.getText();
             document.open();
 
             ///////////////////////////////////////////////
-
-
 ///////////////////////////////////////////////////////////////////
 //ESTE APARTADO ES PARA CREAR EL TIPO DE LETRA COLOR ETC.
             Font fontTitulos1 = FontFactory.getFont(
@@ -62,22 +59,15 @@ String matricula = PanelPresupuestos.MatriculaCliente.getText();
 //////////////////////////////////////////////////////////////////////
             String cantidad1 = PanelPresupuestos.c1.getText();
             //String nombre = caja.getText();
-           // String modelo = (String) combo1.getSelectedItem();
+            // String modelo = (String) combo1.getSelectedItem();
             String nombre1 = PanelPresupuestos.n1.getText();
             String precio1 = PanelPresupuestos.p1.getText();
             String descuento1 = PanelPresupuestos.d1.getText();
-            
-            
-             
-             //////////////////////////////////////////////////////////////
-               
-            
-/////////////////////////////////////////////////////////////////////////
 
-            
-        
-            Image fotocabecera= Image.getInstance("src\\main\\java\\Resource\\logo.png"); //NOI18N
- 
+            //////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+            Image fotocabecera = Image.getInstance("src\\main\\java\\Resource\\logo.png"); //NOI18N
+
             fotocabecera.setAlignment(Element.ALIGN_CENTER);
             fotocabecera.setSpacingAfter(1);
             fotocabecera.setSpacingBefore(0);
@@ -87,7 +77,7 @@ String matricula = PanelPresupuestos.MatriculaCliente.getText();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
             //String parrafo =(""+ formato.format(fecha)+"");
-           // document.add(new Paragraph(parrafo));
+            // document.add(new Paragraph(parrafo));
             ////////////////////////////////////////////////////// ///////////////////////////////
             Paragraph paragraph = new Paragraph();
 
@@ -97,23 +87,48 @@ String matricula = PanelPresupuestos.MatriculaCliente.getText();
             paragraph.setIndentationLeft(1);
             paragraph.setIndentationRight(1);
 
-            Chunk chunk1 = new Chunk("Presupuesto exclusivo para  " + nombre + " con el Vehiculo, matricula "+matricula+"", fontTitulos1); //NOI18N
+            Chunk chunk1 = new Chunk("Presupuesto exclusivo para  " + nombre + " con el Vehiculo, matricula " + matricula + "", fontTitulos1); //NOI18N
 
             paragraph.add(chunk1);
 
             //document.add(new Paragraph("Presupuesto     " + nombre + "",fontTitulos1));
-
-
 ////////////////////////////////////////////////////////////////////
+            PdfPTable table = new PdfPTable(4);
+            table.getDefaultCell().setFixedHeight(20);
+            table.getDefaultCell().setBackgroundColor(BaseColor.YELLOW);
+            table.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.setWidthPercentage(80);
+            table.setSpacingBefore(1);
+            table.setSpacingAfter(1);
+             PdfPCell cell,cell1,cell2,cell3,cell4;
+            cell = new PdfPCell(new Phrase("cantidad", tfont1)); //NOI18N
+            cell.setRowspan(1);
+            cell1 = new PdfPCell(new Phrase("Descripcion", tfont1)); //NOI18N
+            cell1.setRowspan(1);
+            cell2 = new PdfPCell(new Phrase("Precio", tfont1)); //NOI18N
+            cell2.setRowspan(1);
+            cell3 = new PdfPCell(new Phrase("Descuento", tfont1)); //NOI18N
+            cell3.setRowspan(1);
+            cell4 = new PdfPCell(new Phrase(PanelPresupuestos.c1.getText(), tfont1)); //NOI18N
+            cell4.setRowspan(1);
+            cell4 = new PdfPCell(new Phrase(PanelPresupuestos.n1.getText(), tfont1)); //NOI18N
+            cell4.setRowspan(1);
+            cell4 = new PdfPCell(new Phrase(PanelPresupuestos.p1.getText(), tfont1)); //NOI18N
+            cell4.setRowspan(1);
+            cell4 = new PdfPCell(new Phrase(PanelPresupuestos.d1.getText(), tfont1)); //NOI18N
+            cell4.setRowspan(1);
+            table.addCell(cell);
+            table.addCell(cell1);
+            table.addCell(cell2);
+            table.addCell(cell3);
+            table.addCell(cell4);
+            table.addCell(cell4);
+            table.addCell(cell4);
+            table.addCell(cell4);
+            
 
-
-    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
-
 /////////////////////////////////////////////////////////////////////////    
-
-
             Paragraph paragraph2 = new Paragraph();
 
             paragraph2.setSpacingAfter(5);
@@ -139,44 +154,39 @@ String matricula = PanelPresupuestos.MatriculaCliente.getText();
 
             paragraph3.add(chunk3);
 
-
 /////////////////////////////////////////////////////////////////////////////           
             document.add(fotocabecera);
             document.add(paragraph);
- //////////////////////////////////////////////////////////////////////
-  /////////////////////////Imagen de la maquina////////////////////////////// 
-             
+            document.add(table);
+            //////////////////////////////////////////////////////////////////////
+            /////////////////////////Imagen de la maquina////////////////////////////// 
+
             document.add(paragraph2);
-         
+
             document.add(paragraph3);
-           
-             //String parrafo =("Documento cerrado a fecha   " +   formato.format(fecha)+"");
+
+            //String parrafo =("Documento cerrado a fecha   " +   formato.format(fecha)+"");
             // document.add(new Paragraph(parrafo));
             Paragraph paragraphfecha = new Paragraph();
 
             paragraphfecha.setSpacingAfter(50);
             paragraphfecha.setSpacingBefore(10);
-           paragraphfecha.setAlignment(Element.ALIGN_CENTER);
+            paragraphfecha.setAlignment(Element.ALIGN_CENTER);
             paragraphfecha.setIndentationLeft(1);
             paragraphfecha.setIndentationRight(1);
-            Chunk chunkfecha = new Chunk("Documento cerrado a fecha   " +   formato.format(fecha)+"", tfont3); //NOI18N
-            
+            Chunk chunkfecha = new Chunk("Documento cerrado a fecha   " + formato.format(fecha) + "", tfont3); //NOI18N
+
             paragraphfecha.add(chunkfecha);
             document.add(paragraphfecha);
-           
-          
-          
+
             document.close();
-           
-          //Abrir el archivo
-            File file = new File("Prs/" +nombre+matricula+ ".pdf"); //NOI18N
-          Desktop.getDesktop().open(file);
-             
-            
-           
-        } catch (DocumentException | IOException ex) 
-        {
+
+            //Abrir el archivo
+            File file = new File("Prs/" + nombre + matricula + ".pdf"); //NOI18N
+            Desktop.getDesktop().open(file);
+
+        } catch (DocumentException | IOException ex) {
         }
-        
-    } 
+
+    }
 }
