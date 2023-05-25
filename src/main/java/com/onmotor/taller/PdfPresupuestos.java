@@ -100,7 +100,7 @@ public class PdfPresupuestos {
             table.setWidthPercentage(80);
             table.setSpacingBefore(1);
             table.setSpacingAfter(1);
-             PdfPCell cell,cell1,cell2,cell3,cell4,cell5,cell6,cell7;
+             PdfPCell cell,cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8,cell9,cell10,cell11;
             cell = new PdfPCell(new Phrase("cantidad", tfont1)); //NOI18N
             cell.setRowspan(1);
             cell1 = new PdfPCell(new Phrase("Descripcion", tfont1)); //NOI18N
@@ -116,7 +116,15 @@ public class PdfPresupuestos {
             cell6 = new PdfPCell(new Phrase(PanelPresupuestos.p1.getText(), tfont1)); //NOI18N
             cell6.setRowspan(1);
             cell7 = new PdfPCell(new Phrase(PanelPresupuestos.d1.getText(), tfont1)); //NOI18N
-            cell5.setRowspan(1);
+            cell7.setRowspan(1);
+            cell8 = new PdfPCell(new Phrase(PanelPresupuestos.c2.getText(), tfont1)); //NOI18N
+            cell8.setRowspan(1);
+            cell9 = new PdfPCell(new Phrase(PanelPresupuestos.n2.getText(), tfont1)); //NOI18N
+            cell9.setRowspan(1);
+            cell10 = new PdfPCell(new Phrase(PanelPresupuestos.p2.getText(), tfont1)); //NOI18N
+            cell10.setRowspan(1);
+            cell11 = new PdfPCell(new Phrase(PanelPresupuestos.d2.getText(), tfont1)); //NOI18N
+            cell11.setRowspan(1);
             table.addCell(cell);
             table.addCell(cell1);
             table.addCell(cell2);
@@ -125,6 +133,10 @@ public class PdfPresupuestos {
             table.addCell(cell5);
             table.addCell(cell6);
             table.addCell(cell7);
+            table.addCell(cell8);
+            table.addCell(cell9);
+            table.addCell(cell10);
+            table.addCell(cell11);
             
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
