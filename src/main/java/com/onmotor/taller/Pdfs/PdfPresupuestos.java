@@ -1,5 +1,6 @@
-package com.onmotor.taller;
+package com.onmotor.taller.Pdfs;
 
+import com.onmotor.taller.PanelPresupuestos;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -14,6 +15,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -39,8 +41,13 @@ public class PdfPresupuestos {
 
             ///////////////////////////////////////////////////////
             // Obtener la instancia del PdfWriter
-            PdfWriter.getInstance(document, fileOutputStream);
+            PdfWriter writer = PdfWriter.getInstance(document, fileOutputStream);
 
+            MembreteHeaderiText header = new MembreteHeaderiText();
+            //Asignamos el manejador de eventos al escritor.
+            writer.setPageEvent(header);
+            footer foter = new footer();
+            writer.setPageEvent(foter);
             // Abrir el documento
             document.open();
 
@@ -100,7 +107,7 @@ public class PdfPresupuestos {
             table.setWidthPercentage(80);
             table.setSpacingBefore(1);
             table.setSpacingAfter(1);
-             PdfPCell cell,cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8,cell9,cell10,cell11;
+            PdfPCell cell, cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10, cell11;
             cell = new PdfPCell(new Phrase("cantidad", tfont1)); //NOI18N
             cell.setRowspan(1);
             cell1 = new PdfPCell(new Phrase("Descripcion", tfont1)); //NOI18N
@@ -137,7 +144,6 @@ public class PdfPresupuestos {
             table.addCell(cell9);
             table.addCell(cell10);
             table.addCell(cell11);
-            
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////    
@@ -149,7 +155,7 @@ public class PdfPresupuestos {
             paragraph2.setIndentationLeft(50);
             paragraph2.setIndentationRight(50);
 
-            Chunk chunk = new Chunk("Propuesta econ�mica", fontTitulos1); //NOI18N
+            Chunk chunk = new Chunk("Propuesta economica", fontTitulos1); //NOI18N
 
             paragraph2.add(chunk);
 

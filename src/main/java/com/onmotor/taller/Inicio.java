@@ -1,6 +1,8 @@
 package com.onmotor.taller;
 
+import com.onmotor.taller.Vistas.vista1;
 import com.formdev.flatlaf.intellijthemes.FlatDraculaIJTheme;
+import com.onmotor.taller.Vistas.VistaCoche;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -201,7 +203,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+VistaCoche vistacoche = new VistaCoche();
+vistacoche.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -217,7 +220,7 @@ public class Inicio extends javax.swing.JFrame {
         vista1 nuevocoche = new vista1();
         nuevocoche.setSize(700, 580);
         nuevocoche.setLocation(0, 0);
-        content.removeAll();
+        //content.removeAll();
         content.add(nuevocoche, BorderLayout.CENTER);
         content.repaint();
     }//GEN-LAST:event_jButton6ActionPerformed
