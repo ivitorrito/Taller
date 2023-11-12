@@ -281,6 +281,7 @@ public class vista1 extends javax.swing.JPanel {
         entradataller.setVisible(true);
         int fila = jtable_datos.rowAtPoint(evt.getPoint());
         entradataller.txtId.setText(jtable_datos.getValueAt(fila, 3).toString());
+        EntradaTaller.txtIdCliente.setText(jtable_datos.getValueAt(fila, 4).toString());
         try {
             String sql5 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Coche WHERE id=" + jtable_datos.getValueAt(fila, 3).toString() + "";
             ConexionMysql conectar4 = new ConexionMysql();
@@ -331,6 +332,8 @@ public class vista1 extends javax.swing.JPanel {
         } catch (SQLException ex) {
             System.err.println(ex.toString());
         }}
+    
+       
        
     }//GEN-LAST:event_jtable_datosMouseClicked
 
