@@ -307,27 +307,27 @@ public class vista1 extends javax.swing.JPanel {
             System.err.println(ex.toString());
         }
         try {
-            String sql6 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Cliente WHERE id=" + jtable_datos.getValueAt(fila, 4).toString() + "";
+            String sql6 = "SELECT nombre,apellido,correo,dni,telefono,direccion,numeropiso,cp,poblacion,ciudad FROM Clientes WHERE id=" + jtable_datos.getValueAt(fila, 4).toString() + "";
             ConexionMysql conectar4 = new ConexionMysql();
             PreparedStatement ps;
             
-            Connection con = conectar4.getConnection();
+            Connection con = conectar.getConnection();
             ps = con.prepareStatement(sql6);
             
             ResultSet rs11 = ps.executeQuery();
             rs11.next();
-            entradataller.txtNombre.setText(rs11.getString(1));
-            entradataller.txtBastidor.setText(rs11.getString(2));
+            EntradaTaller.txtNombre.setText(rs11.getString(1));
+            EntradaTaller.txtApellido.setText(rs11.getString(2));
             entradataller.txtMarca.setText(rs11.getString(3));
-            entradataller.txtColor.setText(rs11.getString(4));
-            entradataller.txtKilometros.setText(rs11.getString(5));
-            entradataller.txtCombustible.setText(rs11.getString(6));
-            entradataller.txtFecha.setText(rs11.getString(7));
-            entradataller.txtModelo.setText(rs11.getString(8));
-            entradataller.txtItv.setText(rs11.getString(9));
-            entradataller.txtTipoMotor.setText(rs11.getString(10));
-            entradataller.txtCilindrada.setText(rs11.getString(11));
-            entradataller.txtCv.setText(rs11.getString(12));
+            EntradaTaller.txtCorreo.setText(rs11.getString(4));
+            EntradaTaller.txtDni.setText(rs11.getString(5));
+            EntradaTaller.txtTelefono.setText(rs11.getString(6));
+            EntradaTaller.txtDireccion.setText(rs11.getString(7));
+            EntradaTaller.txtNumeroPiso.setText(rs11.getString(8));
+            EntradaTaller.txtCp.setText(rs11.getString(9));
+            EntradaTaller.txtPoblacion.setText(rs11.getString(10));
+            EntradaTaller.txtCiudad.setText(rs11.getString(11));
+            
         } catch (SQLException ex) {
             System.err.println(ex.toString());
         }}

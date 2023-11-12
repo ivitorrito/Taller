@@ -547,18 +547,18 @@ public class EntradaTaller extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField txtApellido;
+    public static javax.swing.JTextField txtApellido;
     private javax.swing.JTextArea txtAveria;
     public javax.swing.JTextField txtBastidor;
     public javax.swing.JTextField txtCilindrada;
-    private javax.swing.JTextField txtCiudad;
+    public static javax.swing.JTextField txtCiudad;
     public javax.swing.JTextField txtColor;
     public javax.swing.JTextField txtCombustible;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtCp;
+    public static javax.swing.JTextField txtCorreo;
+    public static javax.swing.JTextField txtCp;
     public javax.swing.JTextField txtCv;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtDni;
+    public static javax.swing.JTextField txtDireccion;
+    public static javax.swing.JTextField txtDni;
     public javax.swing.JTextField txtFecha;
     public javax.swing.JTextField txtId;
     public javax.swing.JTextField txtItv;
@@ -567,10 +567,10 @@ public class EntradaTaller extends javax.swing.JFrame {
     public javax.swing.JTextField txtMatricula;
     public javax.swing.JTextField txtModelo;
     public static javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNumeroPiso;
+    public static javax.swing.JTextField txtNumeroPiso;
     private javax.swing.JTextArea txtObservaciones;
-    private javax.swing.JTextField txtPoblacion;
-    private javax.swing.JTextField txtTelefono;
+    public static javax.swing.JTextField txtPoblacion;
+    public static javax.swing.JTextField txtTelefono;
     public javax.swing.JTextField txtTipoMotor;
     // End of variables declaration//GEN-END:variables
 }
