@@ -4,18 +4,71 @@
  */
 package com.onmotor.taller.Vistas;
 
+import com.onmotor.taller.ConexionMysql;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author ivan
  */
 public class VistaHistoricoIntervencion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VistaHistoricoIntervencion
-     */
+    String[] Titulos = {"id", "averia", "observaciones", "id_coche", "id_cliente"}; //Arreglo de los titulos para la tabla
+    DefaultTableModel dtm_datos = new DefaultTableModel(); //creamos  un modelo para la taba de datos
+    TableRowSorter<TableModel> trs; //Hacemos el table row sorter para poder ordenar la tabla al presionar los encabezados de la misma
+    ResultSet rs;  //el result set es el resultado de la consulta que mandamos por sql
+    String[][] M_datos;  //iniciamos una matriz donde pasaremos los datos de sql
+    ConexionMysql conectar = new ConexionMysql();   //iniciamos un objeto que se encargara de la conexion de datos
+    Connection cn = conectar.getConnection();
     public VistaHistoricoIntervencion() {
         initComponents();
-    }
+        
+    
+     int contador = 0;  //creamos un contador para saber el numero de datos que obtendremos de la tabla datos de sql
+        try { //para las consultas sql siempre vamos a ocupar un try catch por su ocurre un error
+            Statement st_cont = cn.createStatement(); //el statement nos ayuda a procesar una sentencia sql 
+            ResultSet rs_cont = st_cont.executeQuery("SELECT COUNT(*) FROM Averia"); // asignamos los datos obtenidos de la consulta al result set
+            if (rs_cont.next()) {
+                contador = rs_cont.getInt(1);
+            }
+//lo anterior fue solo para conocer el numero de datos que manejariamos esto mediante logra gracias con count de sql y con el  * le decimos que nos cuenta todas las filas de la tabla
+
+            Statement st = cn.createStatement(); //ahora vamos a  hacer lo mismo solo que esta vez no obtendremos el numero de filas en la tabla
+            rs = st.executeQuery("SELECT * FROM Averia WHERE id_coche LIKE'" + txtidHistorico.getText() + "%'"); //aora obtendremos los datos de la tabla para mostrarlos en el jtable
+
+            int cont = 0; //el contador nos ayudara para movernos en las filas de la matriz mientras que los numeros fijos (0,1,2,3) nos moveran por las 4 columnas que seran el id, nombre, etc
+            M_datos = new String[contador][5]; //definimos el tamaño de la matriz 
+            while (rs.next()) { //el while nos ayudara a recorrer los datos obtenidos en la consulta anterior y asignarlos a la matriz  
+                M_datos[cont][0] = rs.getString("id");    //agregamos los datos a la table
+                M_datos[cont][1] = rs.getString("averia");
+                M_datos[cont][2] = rs.getString("observaciones");
+                M_datos[cont][3] = rs.getString("id_coche");
+                M_datos[cont][4] = rs.getString("id_cliente");
+                cont = cont + 1; //avanzamos una posicion del contador para que pase a la siguiente fila
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(vista11.class.getName()).log(Level.SEVERE, null, ex); //si llegara a ocurrir un error ya se  una mala consulta o mala conexion aqui nos lo mostraria
+        }
+
+        dtm_datos = new DefaultTableModel(M_datos, Titulos) { //ahora agregaremos la matriz y los titulos al modelo de tabla
+            @Override
+            public boolean isCellEditable(int row, int column) {//este metodo es muy util si no quieren que editen su tabla, 
+                return false;  //si quieren modificar los campos al dar clic entonces borren este metodo
+            }
+        };
+        tablaHistorico.setModel(dtm_datos); //ahora el modelo que ya tiene tanto los datos como los titulos lo agregamos a la tabla
+        trs = new TableRowSorter<>(dtm_datos); //iniciamos el table row sorter para ordenar los datos (esto es si gustan)
+        tablaHistorico.setRowSorter(trs); //y lo agregamos al jtable
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +82,8 @@ public class VistaHistoricoIntervencion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaHistorico = new javax.swing.JTable();
+        txtidHistorico = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -40,7 +94,7 @@ public class VistaHistoricoIntervencion extends javax.swing.JFrame {
 
         jButton1.setText("Cerrar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaHistorico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -51,19 +105,21 @@ public class VistaHistoricoIntervencion extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaHistorico);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(13, 13, 13)
+                .addComponent(txtidHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -74,7 +130,9 @@ public class VistaHistoricoIntervencion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(txtidHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
@@ -125,6 +183,7 @@ public class VistaHistoricoIntervencion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaHistorico;
+    public static javax.swing.JTextField txtidHistorico;
     // End of variables declaration//GEN-END:variables
 }

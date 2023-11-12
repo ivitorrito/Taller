@@ -200,9 +200,9 @@ private void datos_tabla() {
         
         VistaHistoricoIntervencion vista = new VistaHistoricoIntervencion();
         vista.setVisible(true);
-       /* int fila = jTable1.rowAtPoint(evt.getPoint());
-        entradataller.txtId.setText(jTable1.getValueAt(fila, 3).toString());
-        try {
+       int fila = jTable1.rowAtPoint(evt.getPoint());
+        VistaHistoricoIntervencion.txtidHistorico.setText(jTable1.getValueAt(fila, 3).toString());
+       /* try {
             String sql5 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Coche WHERE id=" + jTable1.getValueAt(fila, 3).toString() + "";
             ConexionMysql conectar4 = new ConexionMysql();
             PreparedStatement ps;

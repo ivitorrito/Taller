@@ -493,7 +493,7 @@ public class EntradaTaller extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String sqlAveria = "insert into Averia (averia,observaciones)values(?,?)";
+        String sqlAveria = "insert into Averia (averia,observaciones,id_coche,id_cliente)values(?,?,?,?)";
         try {
             ConexionMysql conectar = new ConexionMysql();
             PreparedStatement ps;
@@ -502,6 +502,8 @@ public class EntradaTaller extends javax.swing.JFrame {
             ps = con.prepareStatement(sqlAveria);
             ps.setString(1, txtAveria.getText());
             ps.setString(2, txtObservaciones.getText());
+            ps.setString(3, txtId.getText());
+            ps.setString(4, txtObservaciones.getText());
 
             ps.execute();
 
@@ -564,7 +566,7 @@ public class EntradaTaller extends javax.swing.JFrame {
     public javax.swing.JTextField txtMarca;
     public javax.swing.JTextField txtMatricula;
     public javax.swing.JTextField txtModelo;
-    private javax.swing.JTextField txtNombre;
+    public static javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNumeroPiso;
     private javax.swing.JTextArea txtObservaciones;
     private javax.swing.JTextField txtPoblacion;

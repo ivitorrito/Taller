@@ -25,7 +25,7 @@ import javax.swing.table.TableRowSorter;
  * @author Taller
  */
 public class vista1 extends javax.swing.JPanel {
- String[] Titulos = {"MATRICULA", "MARCA", "MODELO", "ID"}; //Arreglo de los titulos para la tabla
+ String[] Titulos = {"MATRICULA", "MARCA", "MODELO", "ID", "ID_CLIENTE"}; //Arreglo de los titulos para la tabla
     DefaultTableModel dtm_datos = new DefaultTableModel(); //creamos  un modelo para la taba de datos
     TableRowSorter<TableModel> trs; //Hacemos el table row sorter para poder ordenar la tabla al presionar los encabezados de la misma
     ResultSet rs;  //el result set es el resultado de la consulta que mandamos por sql
@@ -52,15 +52,16 @@ public class vista1 extends javax.swing.JPanel {
 //lo anterior fue solo para conocer el numero de datos que manejariamos esto mediante logra gracias con count de sql y con el  * le decimos que nos cuenta todas las filas de la tabla
 
             Statement st = cn.createStatement(); //ahora vamos a  hacer lo mismo solo que esta vez no obtendremos el numero de filas en la tabla
-            rs = st.executeQuery("SELECT matricula,marca,modelo,id FROM Coche"); //aora obtendremos los datos de la tabla para mostrarlos en el jtable
+            rs = st.executeQuery("SELECT matricula,marca,modelo,id,id_cliente FROM Coche"); //aora obtendremos los datos de la tabla para mostrarlos en el jtable
 
             int cont = 0; //el contador nos ayudara para movernos en las filas de la matriz mientras que los numeros fijos (0,1,2,3) nos moveran por las 4 columnas que seran el id, nombre, etc
-            M_datos = new String[contador][4]; //definimos el tamaño de la matriz 
+            M_datos = new String[contador][5]; //definimos el tamaño de la matriz 
             while (rs.next()) { //el while nos ayudara a recorrer los datos obtenidos en la consulta anterior y asignarlos a la matriz  
                 M_datos[cont][0] = rs.getString("matricula");    //agregamos los datos a la table
                 M_datos[cont][1] = rs.getString("marca");
                 M_datos[cont][2] = rs.getString("modelo");
                 M_datos[cont][3] = rs.getString("id");
+                M_datos[cont][4] = rs.getString("id_cliente");
                 cont = cont + 1; //avanzamos una posicion del contador para que pase a la siguiente fila
             }
 
@@ -246,13 +247,14 @@ public class vista1 extends javax.swing.JPanel {
                 valor = rs.getInt(1); //una vez que obtenimos el numero de filas continuamos a sacar  el valor que buscamos
             }
 
-            M_datos = new String[valor][4];
+            M_datos = new String[valor][5];
             rs = st_cont.executeQuery("SELECT * FROM Coche WHERE matricula LIKE'" + jt_buscador.getText() + "%'"); //aqui es donde buscaremos a a la persona en especifico o las personas
             while (rs.next()) {
                 M_datos[cont][0] = rs.getString("matricula");
                 M_datos[cont][1] = rs.getString("marca");
                 M_datos[cont][2] = rs.getString("modelo");
                 M_datos[cont][3] = rs.getString("id");
+                M_datos[cont][4] = rs.getString("id_cliente");
                 cont = cont + 1;
             }
             dtm_datos = new DefaultTableModel(M_datos, Titulos) {
@@ -283,8 +285,10 @@ public class vista1 extends javax.swing.JPanel {
             String sql5 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Coche WHERE id=" + jtable_datos.getValueAt(fila, 3).toString() + "";
             ConexionMysql conectar4 = new ConexionMysql();
             PreparedStatement ps;
+            
             Connection con = conectar4.getConnection();
             ps = con.prepareStatement(sql5);
+            
             ResultSet rs1 = ps.executeQuery();
             rs1.next();
             entradataller.txtMatricula.setText(rs1.getString(1));
@@ -301,7 +305,33 @@ public class vista1 extends javax.swing.JPanel {
             entradataller.txtCv.setText(rs1.getString(12));
         } catch (SQLException ex) {
             System.err.println(ex.toString());
+        }
+        try {
+            String sql6 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Cliente WHERE id=" + jtable_datos.getValueAt(fila, 4).toString() + "";
+            ConexionMysql conectar4 = new ConexionMysql();
+            PreparedStatement ps;
+            
+            Connection con = conectar4.getConnection();
+            ps = con.prepareStatement(sql6);
+            
+            ResultSet rs11 = ps.executeQuery();
+            rs11.next();
+            entradataller.txtNombre.setText(rs11.getString(1));
+            entradataller.txtBastidor.setText(rs11.getString(2));
+            entradataller.txtMarca.setText(rs11.getString(3));
+            entradataller.txtColor.setText(rs11.getString(4));
+            entradataller.txtKilometros.setText(rs11.getString(5));
+            entradataller.txtCombustible.setText(rs11.getString(6));
+            entradataller.txtFecha.setText(rs11.getString(7));
+            entradataller.txtModelo.setText(rs11.getString(8));
+            entradataller.txtItv.setText(rs11.getString(9));
+            entradataller.txtTipoMotor.setText(rs11.getString(10));
+            entradataller.txtCilindrada.setText(rs11.getString(11));
+            entradataller.txtCv.setText(rs11.getString(12));
+        } catch (SQLException ex) {
+            System.err.println(ex.toString());
         }}
+       
     }//GEN-LAST:event_jtable_datosMouseClicked
 
 
