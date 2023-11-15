@@ -4,6 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -11,6 +16,8 @@ public class EntradaTaller extends javax.swing.JFrame {
 
     public EntradaTaller() {
         initComponents();
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        txtFechaHoy.setText(dtf.format(LocalDateTime.now()));
 
     }
 
@@ -23,6 +30,7 @@ public class EntradaTaller extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel12 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
@@ -83,6 +91,7 @@ public class EntradaTaller extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        txtFechaHoy = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -427,10 +436,17 @@ public class EntradaTaller extends javax.swing.JFrame {
 
         jLabel2.setText("Observaciones");
 
-        jButton2.setText("Crear Averia");
+        jButton2.setText("Crear Entrada");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        txtFechaHoy.setEditable(false);
+        txtFechaHoy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaHoyActionPerformed(evt);
             }
         });
 
@@ -454,11 +470,17 @@ public class EntradaTaller extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtFechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(273, 273, 273))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
+                .addContainerGap(156, Short.MAX_VALUE)
+                .addComponent(txtFechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -498,7 +520,7 @@ public class EntradaTaller extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String sqlAveria = "insert into Averia (averia,observaciones,id_coche,id_cliente)values(?,?,?,?)";
+        String sqlAveria = "insert into Averia (averia,observaciones,id_coche,id_cliente,fecha)values(?,?,?,?,?)";
         try {
             ConexionMysql conectar = new ConexionMysql();
             PreparedStatement ps;
@@ -508,7 +530,8 @@ public class EntradaTaller extends javax.swing.JFrame {
             ps.setString(1, txtAveria.getText());
             ps.setString(2, txtObservaciones.getText());
             ps.setString(3, txtId.getText());
-            ps.setString(4, txtObservaciones.getText());
+            ps.setString(4, txtIdCliente.getText());
+            ps.setString(5, txtFechaHoy.getText());
 
             ps.execute();
 
@@ -516,10 +539,15 @@ public class EntradaTaller extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void txtFechaHoyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaHoyActionPerformed
+
+    }//GEN-LAST:event_txtFechaHoyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -565,6 +593,7 @@ public class EntradaTaller extends javax.swing.JFrame {
     public static javax.swing.JTextField txtDireccion;
     public static javax.swing.JTextField txtDni;
     public javax.swing.JTextField txtFecha;
+    public static javax.swing.JTextField txtFechaHoy;
     public javax.swing.JTextField txtId;
     public static javax.swing.JTextField txtIdCliente;
     public javax.swing.JTextField txtItv;

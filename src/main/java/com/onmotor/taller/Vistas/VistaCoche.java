@@ -22,6 +22,7 @@ import javax.swing.table.TableRowSorter;
  * @author ivan
  */
 public class VistaCoche extends javax.swing.JFrame {
+    
 String[] Titulos = {"MATRICULA", "MARCA", "MODELO", "ID"}; //Arreglo de los titulos para la tabla
     DefaultTableModel dtm_datos = new DefaultTableModel(); //creamos  un modelo para la taba de datos
     TableRowSorter<TableModel> trs; //Hacemos el table row sorter para poder ordenar la tabla al presionar los encabezados de la misma
@@ -201,30 +202,9 @@ private void datos_tabla() {
         VistaHistoricoIntervencion vista = new VistaHistoricoIntervencion();
         vista.setVisible(true);
        int fila = jTable1.rowAtPoint(evt.getPoint());
+    
         VistaHistoricoIntervencion.txtidHistorico.setText(jTable1.getValueAt(fila, 3).toString());
-       /* try {
-            String sql5 = "SELECT matricula,nbastidor,marca,color,kilometros,combustible,fechamatriculacion,modelo,itv,tipomotor,cilindrada,cv FROM Coche WHERE id=" + jTable1.getValueAt(fila, 3).toString() + "";
-            ConexionMysql conectar4 = new ConexionMysql();
-            PreparedStatement ps;
-            Connection con = conectar4.getConnection();
-            ps = con.prepareStatement(sql5);
-            ResultSet rs1 = ps.executeQuery();
-            rs1.next();
-            entradataller.txtMatricula.setText(rs1.getString(1));
-            entradataller.txtBastidor.setText(rs1.getString(2));
-            entradataller.txtMarca.setText(rs1.getString(3));
-            entradataller.txtColor.setText(rs1.getString(4));
-            entradataller.txtKilometros.setText(rs1.getString(5));
-            entradataller.txtCombustible.setText(rs1.getString(6));
-            entradataller.txtFecha.setText(rs1.getString(7));
-            entradataller.txtModelo.setText(rs1.getString(8));
-            entradataller.txtItv.setText(rs1.getString(9));
-            entradataller.txtTipoMotor.setText(rs1.getString(10));
-            entradataller.txtCilindrada.setText(rs1.getString(11));
-            entradataller.txtCv.setText(rs1.getString(12));
-        } catch (SQLException ex) {
-            System.err.println(ex.toString());
-        }*/
+       
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -266,7 +246,7 @@ private void datos_tabla() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable jTable1;
     private javax.swing.JTextField txtCoche;
     // End of variables declaration//GEN-END:variables
 }
